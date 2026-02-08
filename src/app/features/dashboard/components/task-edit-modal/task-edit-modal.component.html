@@ -1,0 +1,23 @@
+<div class="backdrop" (click)="onBackdrop()" role="dialog" aria-modal="true">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <header class="head">
+      <h2>Edit Task</h2>
+      <button type="button" class="icon" (click)="onClose()">✕</button>
+    </header>
+
+    <form [formGroup]="form" (ngSubmit)="onSave()">
+      <label>
+        Title
+        <input formControlName="title" />
+      </label>
+      <div class="error" *ngIf="form.controls.title.touched && form.controls.title.invalid">
+        Title is required (min 3 chars).
+      </div>
+
+      <footer class="actions">
+        <button type="button" class="ghost" (click)="onClose()">Cancel</button>
+        <button type="submit" class="primary">Save</button>
+      </footer>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+@use 'variables' as v;
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    display: grid;
+    place-items: center;
+    padding: v.$space-4;
+    animation: fade .15s ease;
+}
+
+.modal {
+    width: min(520px, 100%);
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid v.$border;
+    border-radius: 14px;
+    padding: v.$space-3;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, .18);
+    transform: translateY(0);
+    animation: pop .15s ease;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: v.$space-2;
+    margin-bottom: v.$space-2;
+
+    h2 {
+        margin: 0;
+        font-size: 16px;
+    }
+}
+
+.icon {
+    border: 1px solid v.$border;
+    background: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 6px 10px;
+    color: var(--text);
+}
+
+label {
+    display: grid;
+    gap: 6px;
+    font-weight: 600;
+}
+
+input {
+    padding: v.$space-2;
+    border: 1px solid v.$border;
+    border-radius: 10px;
+    outline: none;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: v.$space-2;
+    margin-top: v.$space-3;
+}
+
+.ghost,
+.primary {
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: transform .15s ease;
+    border: 1px solid v.$border;
+}
+
+.ghost {
+    background: transparent;
+    color: var(--text);
+}
+
+.primary {
+    background: v.$primary;
+    color: #fff;
+    border-color: transparent;
+}
+
+.error {
+    color: v.$danger;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pop {
+    from {
+        transform: translateY(6px);
+        opacity: .85;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
