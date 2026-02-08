@@ -1,0 +1,14 @@
+$breakpoints: (
+    'tablet': 768px,
+    'desktop': 1024px
+);
+
+@mixin up($name) {
+    $size: map-get($breakpoints, $name);
+
+    @if $size {
+        @media (min-width: $size) {
+            @content;
+        }
+    }
+}
