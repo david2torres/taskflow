@@ -26,6 +26,11 @@
                 "input": "public"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "styles": [
               "src/styles.scss"
             ]
@@ -80,6 +85,11 @@
                 "input": "public"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "styles": [
               "src/styles.scss"
             ]
@@ -87,5 +97,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "336ad3ac-8990-4109-8986-26462a69ad8e"
   }
 }

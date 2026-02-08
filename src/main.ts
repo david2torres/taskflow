@@ -1,6 +1,20 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { App } from './app/app';
+import { provideRouter, withComponentInputBinding, withViewTransitions } from '@angular/router';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+import { routes } from './app/app.routes';
+import { authInterceptor } from './app/core/infrastructure/interceptor/auth.interceptor';
+import { AppComponent } from './app/app.component';
+import { provideZonelessChangeDetection } from '@angular/core';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideZonelessChangeDetection(),
+    provideRouter(
+      routes,
+      withComponentInputBinding(),
+      withViewTransitions()
+    ),
+    provideHttpClient(withInterceptors([authInterceptor])),
+  ],
+}).catch(console.error);

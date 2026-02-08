@@ -1,0 +1,88 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.page {
+    padding: v.$space-4;
+    display: grid;
+    gap: v.$space-4;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: v.$space-3;
+    border-bottom: 1px solid v.$border;
+    padding-bottom: v.$space-3;
+
+    h1 {
+        margin: 0;
+        color: var(--text);
+    }
+
+    .muted {
+        margin: 6px 0 0 0;
+        color: var(--muted);
+    }
+}
+
+.grid {
+    display: grid;
+    gap: v.$space-3;
+    grid-template-columns: 1fr;
+
+    @include m.up('tablet') {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include m.up('desktop') {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.ghost {
+    border: 1px solid v.$border;
+    background: transparent;
+    border-radius: 10px;
+    padding: v.$space-2 v.$space-3;
+    cursor: pointer;
+    transition: transform .15s ease;
+    color: var(--text);
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+}
+
+.state {
+    display: flex;
+    align-items: center;
+    gap: v.$space-2;
+    color: var(--muted);
+}
+
+.state.error {
+    color: v.$danger;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid v.$border;
+    border-top-color: v.$primary;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: v.$space-2;
+}

@@ -1,0 +1,25 @@
+<div class="filters">
+  <div class="group">
+    <label>Status</label>
+    <select [(ngModel)]="status" (ngModelChange)="emit()">
+      <option value="all">All</option>
+      <option value="completed">Completed</option>
+      <option value="pending">Pending</option>
+    </select>
+  </div>
+
+  <div class="group">
+    <label>Sort</label>
+    <select [(ngModel)]="sortBy" (ngModelChange)="emit()">
+      <option value="dueDate">Due Date</option>
+      <option value="title">Title</option>
+    </select>
+  </div>
+
+  <div class="group grow">
+    <label>Search</label>
+    <input [(ngModel)]="search" (ngModelChange)="emit()" placeholder="Search by title..." />
+  </div>
+
+  <button class="ghost" type="button" (click)="toggleDark()">Dark mode</button>
+</div>

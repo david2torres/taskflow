@@ -1,0 +1,57 @@
+@use 'variables' as v;
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: v.$space-3;
+    align-items: end;
+    border: 1px solid v.$border;
+    border-radius: 12px;
+    padding: v.$space-3;
+    background: var(--surface);
+}
+
+.group {
+    display: grid;
+    gap: v.$space-1;
+
+    label {
+        font-size: 12px;
+        color: var(--muted);
+    }
+}
+
+.grow {
+    flex: 1;
+    min-width: 220px;
+}
+
+select,
+input {
+    padding: v.$space-2;
+    border: 1px solid v.$border;
+    border-radius: 10px;
+    outline: none;
+    transition: transform .15s ease, border-color .15s ease;
+    background: var(--surface);
+    color: var(--text);
+
+    &:focus {
+        border-color: v.$primary;
+        transform: translateY(-1px);
+    }
+}
+
+.ghost {
+    border: 1px solid v.$border;
+    background: transparent;
+    border-radius: 10px;
+    padding: v.$space-2 v.$space-3;
+    cursor: pointer;
+    transition: transform .15s ease;
+    color: var(--text);
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+}

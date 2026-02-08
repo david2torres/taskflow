@@ -1,0 +1,29 @@
+<div class="page">
+  <div class="card">
+    <h1>TaskFlow</h1>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>
+        Email
+        <input type="email" formControlName="email" placeholder="you@email.com" />
+      </label>
+      <div class="error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+        Please enter a valid email.
+      </div>
+
+      <label>
+        Password
+        <input type="password" formControlName="password" placeholder="•••••" />
+      </label>
+      <div class="error" *ngIf="form.controls.password.touched && form.controls.password.invalid">
+        Password is required (min 3 chars).
+      </div>
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Signing in...' : 'Login' }}
+      </button>
+
+      <div class="error" *ngIf="errorMsg">{{ errorMsg }}</div>
+    </form>
+  </div>
+</div>
