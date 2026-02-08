@@ -1,0 +1,76 @@
+@use 'variables' as v;
+
+.page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: v.$space-4;
+}
+
+.card {
+    width: min(420px, 100%);
+    border: 1px solid v.$border;
+    border-radius: 12px;
+    padding: v.$space-4;
+    background: var(--surface);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .08);
+}
+
+h1 {
+    margin: 0 0 v.$space-2 0;
+}
+
+.subtitle {
+    margin: 0 0 v.$space-4 0;
+    color: var(--muted);
+}
+
+label {
+    display: grid;
+    gap: v.$space-1;
+    margin-bottom: v.$space-3;
+    font-weight: 600;
+}
+
+input {
+    padding: v.$space-2;
+    border: 1px solid v.$border;
+    border-radius: 10px;
+    outline: none;
+    transition: transform .15s ease, border-color .15s ease;
+    background: var(--surface);
+    color: var(--text);
+
+    &:focus {
+        border-color: v.$primary;
+        transform: translateY(-1px);
+    }
+}
+
+button {
+    width: 100%;
+    padding: v.$space-2;
+    border-radius: 10px;
+    border: 0;
+    background: v.$primary;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .15s ease;
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+
+    &:disabled {
+        opacity: .7;
+        cursor: not-allowed;
+    }
+}
+
+.error {
+    color: v.$danger;
+    font-size: 12px;
+    margin-top: -8px;
+    margin-bottom: v.$space-2;
+}
