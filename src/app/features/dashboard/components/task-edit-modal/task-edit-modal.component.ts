@@ -14,8 +14,7 @@ import { Task } from '../../../../shared/models/interface/task.interface';
 export class TaskEditModalComponent {
     private readonly fb = inject(FormBuilder);
 
-    @Input({ required: true }) task!: Task;
-
+    @Input({ required: true }) task!: Task | null;
     @Output() close = new EventEmitter<void>();
     @Output() save = new EventEmitter<{ id: number; title: string }>();
 
@@ -35,6 +34,8 @@ export class TaskEditModalComponent {
             this.form.markAllAsTouched();
             return;
         }
-        this.save.emit({ id: this.task.id, title: this.form.getRawValue().title! });
+        if (this.task) {
+            this.save.emit({ id: this.task?.id, title: this.form.getRawValue().title! });
+        }
     }
 }

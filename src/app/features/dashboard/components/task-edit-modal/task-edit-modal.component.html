@@ -10,9 +10,9 @@
         Title
         <input formControlName="title" />
       </label>
-      <div class="error" *ngIf="form.controls.title.touched && form.controls.title.invalid">
-        Title is required (min 3 chars).
-      </div>
+      @if (form.controls.title.touched && form.controls.title.invalid) {
+        <div class="error">Title is required (min 3 chars).</div>
+      }
 
       <footer class="actions">
         <button type="button" class="ghost" (click)="onClose()">Cancel</button>

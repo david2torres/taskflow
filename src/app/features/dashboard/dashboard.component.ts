@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, map, Subject, takeUntil } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TaskFiltersComponent, StatusFilter, SortBy } from './components/task-filters/task-filters.component';
+import { TaskFiltersComponent } from './components/task-filters/task-filters.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { TaskEditModalComponent } from './components/task-edit-modal/task-edit-modal.component';
 import { TaskStore } from '../../core/applications/store/task.store';
 import { AuthService } from '../../core/infrastructure/auth/auth.service';
 import { TaskService } from '../../core/infrastructure/services/task.service';
 import { Task } from '../../shared/models/interface/task.interface';
+import { SortBy, StatusFilter } from '../../shared/models/types/task.type';
 
 @Component({
     selector: 'app-dashboard',
