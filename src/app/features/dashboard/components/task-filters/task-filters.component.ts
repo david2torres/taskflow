@@ -1,15 +1,8 @@
 import { Component, ChangeDetectionStrategy, EventEmitter, Output, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-export type StatusFilter = 'all' | 'completed' | 'pending';
-export type SortBy = 'title' | 'dueDate';
-
-export interface TaskFilterState {
-    status: StatusFilter;
-    sortBy: SortBy;
-    search: string;
-}
+import { TaskFilterState } from '../../../../shared/models/interface/task.interface';
+import { StatusFilter, SortBy } from '../../../../shared/models/types/task.type';
 
 @Component({
     selector: 'app-task-filters',

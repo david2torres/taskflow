@@ -1,7 +1,7 @@
 <div class="page">
   <header class="topbar">
     <div>
-      <h1>Dashboard</h1>
+      <h1>Manage your task</h1>
     </div>
     <button class="ghost" type="button" (click)="logout()">Logout</button>
   </header>
@@ -12,41 +12,44 @@
     [search]="search()"
     (filtersChange)="onFiltersChange($event)"
     (darkModeToggle)="onDarkModeToggle($event)"
-  >
-  </app-task-filters>
+  />
 
-  <div class="state" *ngIf="loading()">
-    <div class="spinner" aria-label="Loading"></div>
-    <span>Loading tasks...</span>
-  </div>
+  @if (loading()) {
+    <div class="state">
+      <div class="spinner" aria-label="Loading"></div>
+      <span>Loading tasks...</span>
+    </div>
+  }
 
-  <div class="state error" *ngIf="error()">{{ error() }}</div>
+  @if (error()) {
+    <div class="state error">{{ error() }}</div>
+  }
 
-  <section class="grid" *ngIf="!loading()">
-    <app-task-card
-      *ngFor="let task of pagedTasks(); trackBy: trackById"
-      [task]="task"
-      (toggle)="onToggle($event)"
-      (delete)="onDelete($event)"
-      (edit)="openEdit($event)"
-    >
-    </app-task-card>
-  </section>
+  @if (!loading()) {
+    <section class="grid">
+      @for (task of pagedTasks(); track $index) {
+        <app-task-card
+          [task]="task"
+          (toggle)="onToggle($event)"
+          (delete)="onDelete($event)"
+          (edit)="openEdit($event)"
+        />
+      }
+    </section>
+  }
 
-  <footer class="pager" *ngIf="!loading()">
-    <button class="ghost" type="button" (click)="prev()">Prev</button>
-    <span class="muted">Page</span>
-    <strong>{{ page() }}</strong>
-    <span class="muted">of</span>
-    <strong>{{ totalPages() }}</strong>
-    <button class="ghost" type="button" (click)="next()">Next</button>
-  </footer>
+  @if (!loading()) {
+    <footer class="pager">
+      <button class="ghost" type="button" (click)="prev()">Prev</button>
+      <span class="muted">Page</span>
+      <strong>{{ page() }}</strong>
+      <span class="muted">of</span>
+      <strong>{{ totalPages() }}</strong>
+      <button class="ghost" type="button" (click)="next()">Next</button>
+    </footer>
+  }
 
-  <app-task-edit-modal
-    *ngIf="editTask() as t"
-    [task]="t"
-    (close)="closeEdit()"
-    (save)="saveEdit($event)"
-  >
-  </app-task-edit-modal>
+  @if (editTask()) {
+    <app-task-edit-modal [task]="editTask()" (close)="closeEdit()" (save)="saveEdit($event)" />
+  }
 </div>

@@ -1,4 +1,4 @@
-import { TaskPriority } from "../types/task.type";
+import { SortBy, StatusFilter, TaskPriority } from "../types/task.type";
 
 export interface Task {
     id: number;
@@ -14,4 +14,10 @@ export interface JsonPlaceholderTodo {
     id: number;
     title: string;
     completed: boolean;
+}
+
+export interface TaskFilterState {
+    status: StatusFilter;
+    sortBy: SortBy;
+    search: string;
 }

@@ -7,23 +7,27 @@
         Email
         <input type="email" formControlName="email" placeholder="you@email.com" />
       </label>
-      <div class="error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
-        Please enter a valid email.
-      </div>
+
+      @if (form.controls.email.touched && form.controls.email.invalid) {
+        <div class="error">Please enter a valid email.</div>
+      }
 
       <label>
         Password
         <input type="password" formControlName="password" placeholder="•••••" />
       </label>
-      <div class="error" *ngIf="form.controls.password.touched && form.controls.password.invalid">
-        Password is required (min 3 chars).
-      </div>
+
+      @if (form.controls.password.touched && form.controls.password.invalid) {
+        <div class="error">Password is required (min 3 chars).</div>
+      }
 
       <button type="submit" [disabled]="loading">
         {{ loading ? 'Signing in...' : 'Login' }}
       </button>
 
-      <div class="error" *ngIf="errorMsg">{{ errorMsg }}</div>
+      @if (errorMsg) {
+        <div class="error">{{ errorMsg }}</div>
+      }
     </form>
   </div>
 </div>
