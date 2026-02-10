@@ -1,7 +1,7 @@
 <div class="page">
   <header class="topbar">
     <div>
-      <h1>Dashboard</h1>
+      <h1>Manage your task</h1>
     </div>
     <button class="ghost" type="button" (click)="logout()">Logout</button>
   </header>
@@ -50,10 +50,6 @@
   }
 
   @if (editTask()) {
-    <app-task-edit-modal
-      [task]="editTask()"
-      (close)="closeEdit()"
-      (save)="saveEdit($event)"
-  />
+    <app-task-edit-modal [task]="editTask()" (close)="closeEdit()" (save)="saveEdit($event)" />
   }
 </div>
